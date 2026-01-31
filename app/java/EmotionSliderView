@@ -1,0 +1,318 @@
+package com.calmcampus.app;
+
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+
+public class EmotionSliderView extends View {
+
+    private Paint trackPaint;
+    private Paint[] emotionPaints;
+    private Paint thumbPaint;
+    private Paint selectedThumbPaint;
+
+    private float[] emotionPositions;
+    private int[] emotionColors;
+    private String[] emotionLabels;
+    private int[] emotionDrawables;  // NEW: Array to hold drawable resource IDs
+
+    private float currentPosition = 2.5f; // Start at middle (neutral) - now 2.5 for 6 emotions
+    private float targetPosition = 2.5f;
+    private float thumbX;
+    private float thumbY;
+
+    private int viewWidth;
+    private int viewHeight;
+    private float trackY;
+    private float emotionRadius = 40f;
+    private float thumbRadius = 50f;
+
+    private OnEmotionChangeListener listener;
+    private ValueAnimator slideAnimator;
+
+    public interface OnEmotionChangeListener {
+        void onEmotionChanged(int emotionIndex, String emotionLabel, int drawableResId);
+        void onEmotionSliding(int emotionIndex, String emotionLabel, int drawableResId);
+    }
+
+    public EmotionSliderView(Context context) {
+        super(context);
+        init();
+    }
+
+    public EmotionSliderView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    private void init() {
+        // Define 6 emotions with colors
+        emotionColors = new int[]{
+                0xFFFF937F, // Mood 1 - Red/Orange
+                0xFFFFAC66, // Mood 2 - Orange/Yellow
+                0xFFFFCD68, // Mood 3 - Yellow/Light Green
+                0xFF8DC48B, // Mood 4 - Light Green/Green
+                0xFF61B991, // Mood 5 - Green/Blue
+                0xFF4FAFE0  // Mood 6 - Blue
+        };
+
+        emotionLabels = new String[]{
+                "Angry",
+                "Anxious",
+                "Sad",
+                "Tired",
+                "Calm",
+                "Happy"
+        };
+
+        // File path
+        // res/drawable
+        emotionDrawables = new int[]{
+                R.drawable.emoji_angry,   // Mood 1
+                R.drawable.emoji_anxious, // Mood 2
+                R.drawable.emoji_sad,     // Mood 3
+                R.drawable.emoji_tired,   // Mood 4
+                R.drawable.emoji_calm,    // Mood 5
+                R.drawable.emoji_happy    // Mood 6
+        };
+
+        emotionPositions = new float[6];
+        emotionPaints = new Paint[6];
+
+        // Initialize paints for each emotion circle
+        for (int i = 0; i < 6; i++) {
+            emotionPaints[i] = new Paint(Paint.ANTI_ALIAS_FLAG);
+            emotionPaints[i].setColor(emotionColors[i]);
+            emotionPaints[i].setStyle(Paint.Style.FILL);
+        }
+
+        // Track paint (background line)
+        trackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        trackPaint.setColor(0xFFBDBDBD);
+        trackPaint.setStrokeWidth(8f);
+        trackPaint.setStrokeCap(Paint.Cap.ROUND);
+
+        // Thumb paint (the sliding indicator)
+        thumbPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        thumbPaint.setColor(0xFFFFFFFF);
+        thumbPaint.setStyle(Paint.Style.FILL);
+        thumbPaint.setShadowLayer(15f, 0f, 5f, 0x40000000);
+
+        selectedThumbPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        selectedThumbPaint.setColor(emotionColors[2]); // Start with neutral
+        selectedThumbPaint.setStyle(Paint.Style.STROKE);
+        selectedThumbPaint.setStrokeWidth(8f);
+
+        setLayerType(LAYER_TYPE_SOFTWARE, thumbPaint);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        viewWidth = w;
+        viewHeight = h;
+        trackY = h / 2f;
+
+        // Calculate positions for 6 emotion circles
+        float padding = 100f;
+        float availableWidth = viewWidth - (2 * padding);
+        for (int i = 0; i < 6; i++) {
+            emotionPositions[i] = padding + (availableWidth / 5) * i;
+        }
+
+        // Set initial thumb position
+        updateThumbPosition(currentPosition);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        if (viewWidth == 0) return;
+
+        // Draw track line
+        canvas.drawLine(
+                emotionPositions[0],
+                trackY,
+                emotionPositions[5],
+                trackY,
+                trackPaint
+        );
+
+        // Draw emotion circles
+        for (int i = 0; i < 6; i++) {
+            float scale = 1.0f;
+            // Make selected emotion slightly larger
+            if (Math.abs(currentPosition - i) < 0.3f) {
+                scale = 1.2f;
+            }
+            canvas.drawCircle(
+                    emotionPositions[i],
+                    trackY,
+                    emotionRadius * scale,
+                    emotionPaints[i]
+            );
+        }
+
+        // Draw thumb (white circle that follows touch)
+        canvas.drawCircle(thumbX, thumbY, thumbRadius, thumbPaint);
+        canvas.drawCircle(thumbX, thumbY, thumbRadius - 15, selectedThumbPaint);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                // Cancel any running animation for immediate response
+                if (slideAnimator != null && slideAnimator.isRunning()) {
+                    slideAnimator.cancel();
+                }
+
+                // Constrain to track bounds
+                if (x < emotionPositions[0]) x = emotionPositions[0];
+                if (x > emotionPositions[5]) x = emotionPositions[5];
+
+                // Calculate which emotion is closest
+                targetPosition = findClosestEmotion(x);
+
+                // IMMEDIATE UPDATE - no animation during drag
+                currentPosition = targetPosition;
+                updateThumbPosition(currentPosition);
+                updateThumbColor(currentPosition);
+
+                // Notify listener in real-time while sliding
+                int nearestEmotion = Math.round(currentPosition);
+                notifyEmotionSliding(nearestEmotion);
+
+                invalidate();
+                return true;
+
+            case MotionEvent.ACTION_UP:
+                // Snap to nearest emotion with quick animation
+                int finalEmotion = Math.round(currentPosition);
+                animateToPosition(finalEmotion);
+                notifyEmotionChanged(finalEmotion);
+                return true;
+        }
+        return super.onTouchEvent(event);
+    }
+
+    private float findClosestEmotion(float x) {
+        // Convert x position to emotion index (0-5)
+        float padding = emotionPositions[0];
+        float range = emotionPositions[5] - emotionPositions[0];
+        float normalized = (x - padding) / range;
+        return normalized * 5; // Scale to 0-5
+    }
+
+    private void animateToPosition(float targetPos) {
+        if (slideAnimator != null && slideAnimator.isRunning()) {
+            slideAnimator.cancel();
+        }
+
+        slideAnimator = ValueAnimator.ofFloat(currentPosition, targetPos);
+        slideAnimator.setDuration(150); // Reduced from 300ms to 150ms for quicker snap
+        slideAnimator.setInterpolator(new DecelerateInterpolator());
+        slideAnimator.addUpdateListener(animation -> {
+            currentPosition = (float) animation.getAnimatedValue();
+            updateThumbPosition(currentPosition);
+            updateThumbColor(currentPosition);
+            invalidate();
+        });
+        slideAnimator.start();
+    }
+
+    private void updateThumbPosition(float position) {
+        // Interpolate thumb position between emotion circles
+        int lowerIndex = (int) Math.floor(position);
+        int upperIndex = (int) Math.ceil(position);
+
+        if (lowerIndex < 0) lowerIndex = 0;
+        if (upperIndex > 5) upperIndex = 5;
+
+        float fraction = position - lowerIndex;
+
+        thumbX = emotionPositions[lowerIndex] +
+                (emotionPositions[upperIndex] - emotionPositions[lowerIndex]) * fraction;
+        thumbY = trackY;
+    }
+
+    private void updateThumbColor(float position) {
+        // Interpolate color between emotions
+        int lowerIndex = (int) Math.floor(position);
+        int upperIndex = (int) Math.ceil(position);
+
+        if (lowerIndex < 0) lowerIndex = 0;
+        if (upperIndex > 5) upperIndex = 5;
+
+        if (lowerIndex == upperIndex) {
+            selectedThumbPaint.setColor(emotionColors[lowerIndex]);
+        } else {
+            // Blend colors
+            int color = blendColors(
+                    emotionColors[lowerIndex],
+                    emotionColors[upperIndex],
+                    position - lowerIndex
+            );
+            selectedThumbPaint.setColor(color);
+        }
+    }
+
+    private int blendColors(int color1, int color2, float ratio) {
+        float inverseRatio = 1f - ratio;
+
+        int r = (int) ((android.graphics.Color.red(color1) * inverseRatio) +
+                (android.graphics.Color.red(color2) * ratio));
+        int g = (int) ((android.graphics.Color.green(color1) * inverseRatio) +
+                (android.graphics.Color.green(color2) * ratio));
+        int b = (int) ((android.graphics.Color.blue(color1) * inverseRatio) +
+                (android.graphics.Color.blue(color2) * ratio));
+
+        return android.graphics.Color.rgb(r, g, b);
+    }
+
+    private void notifyEmotionChanged(int index) {
+        if (listener != null && index >= 0 && index < emotionLabels.length) {
+            listener.onEmotionChanged(index, emotionLabels[index], emotionDrawables[index]);
+        }
+    }
+
+    private void notifyEmotionSliding(int index) {
+        if (listener != null && index >= 0 && index < emotionLabels.length) {
+            listener.onEmotionSliding(index, emotionLabels[index], emotionDrawables[index]);
+        }
+    }
+
+    public void setOnEmotionChangeListener(OnEmotionChangeListener listener) {
+        this.listener = listener;
+    }
+
+    public int getSelectedEmotion() {
+        return Math.round(currentPosition);
+    }
+
+    public String getSelectedEmotionLabel() {
+        int index = getSelectedEmotion();
+        if (index >= 0 && index < emotionLabels.length) {
+            return emotionLabels[index];
+        }
+        return emotionLabels[0]; // fallback
+    }
+
+    // NEW: Get the drawable resource ID for the selected emotion
+    public int getSelectedEmotionDrawable() {
+        int index = getSelectedEmotion();
+        if (index >= 0 && index < emotionDrawables.length) {
+            return emotionDrawables[index];
+        }
+        return emotionDrawables[0]; // fallback
+    }
+}
