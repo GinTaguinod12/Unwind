@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/primary" /> <!-- silhouette color -->
+    <corners android:radius="60dp" /> <!-- makes it rounded / cylinder look -->
+    <stroke android:width="5dp" android:color="@color/dark_primary" /> <!-- Line color -->
+</shape>
