@@ -1,1 +1,157 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_yellowmint">
+
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:orientation="horizontal"
+        android:padding="24dp"
+        android:gravity="center_vertical">
+
+        <!-- Header Text -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Welcome to Unwind!"
+            android:textColor="@color/dark_primary"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+        <!-- Logo on the right -->
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            android:contentDescription="App Logo"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/dark_primary"/>
+
+    <!-- MAIN CONTENT -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Name input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="@drawable/cylinder2_bg"
+            android:backgroundTint="@color/pastel_red">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter your name:"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:id="@+id/nameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your name"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:background="@drawable/cylinder1_bg"
+                android:textColor="@color/dark_primary"
+                android:textSize="16sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="How are you feeling right now?"
+            android:textColor="@color/dark_primary"
+            android:textSize="20sp"
+            android:paddingTop="20dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="24dp">
+
+            <!-- Cylinder background -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cylinder_bg" />
+
+            <!-- Emotion slider -->
+            <com.calmcampus.app.EmotionSliderView
+                android:id="@+id/emotionSlider"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+        </FrameLayout>
+
+        <!-- Horizontal container for text + emoji -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="48dp">
+
+            <!-- Fixed Text -->
+            <TextView
+                android:id="@+id/selectedEmotionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Neutral"
+                android:textColor="#808768"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:layout_gravity="center_vertical"/>
+
+            <!-- Emoji/Image that changes -->
+            <ImageView
+                android:id="@+id/selectedEmotionImage"
+                android:layout_width="34dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:contentDescription="Emotion emoji"
+                android:src="@android:drawable/sym_def_app_icon" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Continue"
+            android:textSize="18sp"
+            android:backgroundTint="@color/dark_primary"/>
+
+    </LinearLayout>
+
+</LinearLayout>
 
