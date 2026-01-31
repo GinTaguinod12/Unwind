@@ -19,9 +19,9 @@ public class EmotionSliderView extends View {
     private float[] emotionPositions;
     private int[] emotionColors;
     private String[] emotionLabels;
-    private int[] emotionDrawables;  // NEW: Array to hold drawable resource IDs
+    private int[] emotionDrawables;  // Array to hold drawable resource IDs
 
-    private float currentPosition = 2.5f; // Start at middle (neutral) - now 2.5 for 6 emotions
+    private float currentPosition = 2.5f; // Start at middle, if 3 then 3rd button and so on
     private float targetPosition = 2.5f;
     private float thumbX;
     private float thumbY;
@@ -104,7 +104,7 @@ public class EmotionSliderView extends View {
         thumbPaint.setShadowLayer(15f, 0f, 5f, 0x40000000);
 
         selectedThumbPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        selectedThumbPaint.setColor(emotionColors[2]); // Start with neutral
+        selectedThumbPaint.setColor(emotionColors[2]); // Start with displaying mood 3
         selectedThumbPaint.setStyle(Paint.Style.STROKE);
         selectedThumbPaint.setStrokeWidth(8f);
 
