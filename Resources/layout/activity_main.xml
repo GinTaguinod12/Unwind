@@ -32,13 +32,13 @@
             android:contentDescription="App Logo"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
-
-
+    
+    <!-- Line -->
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/dark_primary"/>
-
+    
     <!-- MAIN CONTENT -->
 
     <LinearLayout
