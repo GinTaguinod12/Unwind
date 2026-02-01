@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoodSelection">
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="How are you today?"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/moodChoice"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:max="5"
+        android:progress="4"
+        android:scaleX="2"
+        android:scaleY="2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calm"
+        android:textSize="30sp"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:id="@+id/moodText"/>
+
+    <Button
+        android:id="@+id/enterBtn"
+        android:layout_width="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:text="ENTER" />
+
+</LinearLayout>
