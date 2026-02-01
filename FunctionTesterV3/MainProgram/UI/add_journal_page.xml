@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewJournalPage">
+
+
+    <EditText
+        android:id="@+id/edtDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="start"
+        android:hint="Enter Date"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="350dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What was one good thing that happened today?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:background="#fff5de">
+
+                <EditText
+                    android:id="@+id/edtPositiveEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:hint="Write anything that you enjoyed today ..."/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="What was challenging about today?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:background="#fff5de">
+
+                <EditText
+                    android:id="@+id/edtChallenge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:hint="Write anything that troubled you today ... "/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="What do you think influenced your mood today?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:background="#fff5de">
+
+                <EditText
+                    android:id="@+id/edtMoodInfluence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:hint="Write anything that affected your mood ... "/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="What did today taught you?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:background="#fff5de">
+
+                <EditText
+                    android:id="@+id/edtLesson"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:hint="Write here what you learned today ... "/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#4CAF50"
+            android:text="SAVE" />
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="CANCEL" />
+
+
+    </LinearLayout>
+</LinearLayout>
