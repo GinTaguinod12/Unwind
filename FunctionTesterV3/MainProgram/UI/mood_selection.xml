@@ -1,47 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    android:padding="20dp"
     tools:context=".MoodSelection">
 
+    <!-- Question -->
     <TextView
         android:id="@+id/questionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="How are you today?"
-        android:textSize="25sp"
+        android:textSize="26sp"
+        android:textColor="#5C5C5C"
         android:gravity="center"
-        android:layout_marginBottom="30dp"
-        android:textStyle="bold" />
+        android:layout_marginBottom="40dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"/>
 
+    <!-- SeekBar -->
+
+    <!-- Emoji & Mood Label Container -->
     <SeekBar
         android:id="@+id/moodChoice"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:max="5"
         android:progress="4"
+        android:progressTint="#FFD9E8"
         android:scaleX="2"
-        android:scaleY="2" />
+        android:scaleY="2"
+        android:thumbTint="#FFC1CC" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calm"
-        android:textSize="30sp"
-        android:layout_marginTop="25dp"
-        android:textStyle="bold"
-        android:id="@+id/moodText"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp">
 
+
+        <ImageView
+            android:id="@+id/moodImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/calm"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+
+
+
+
+        <!-- Mood Label -->
+        <TextView
+            android:id="@+id/moodText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-medium"
+            android:text="Calm"
+            android:textColor="#5C5C5C"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Enter Button -->
     <Button
         android:id="@+id/enterBtn"
-        android:layout_width="150dp"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content"
-        android:text="ENTER" />
-
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#A3C9F1"
+        android:fontFamily="sans-serif-medium"
+        android:text="ENTER"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 </LinearLayout>
+
