@@ -1,60 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@drawable/background1"
     tools:context=".RegisterPage">
 
+    <!-- App Welcome Title -->
     <TextView
-        android:layout_width="290dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:text="Welcome to Unwind!"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+        android:textSize="28sp"
+        android:textStyle="bold|italic"
+        android:textColor="#333333"
+        android:gravity="center"
+        android:layout_marginBottom="40dp" />
 
+    <!-- Name Input -->
     <EditText
         android:id="@+id/regName"
-        android:layout_width="280dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
         android:hint="Enter your name"
-        android:inputType="text"
-        android:textSize="20dp" />
+        android:inputType="textPersonName"
+        android:padding="16dp"
+        android:background="@drawable/edittext_bg"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:imeOptions="actionNext" />
 
+    <!-- Password Input -->
     <EditText
         android:id="@+id/regPassword"
-        android:layout_width="280dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="10dp"
         android:hint="Enter your password"
-        android:inputType="text"
-        android:textSize="20dp" />
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:background="@drawable/edittext_bg"
+        android:textSize="16sp"
+        android:layout_marginBottom="30dp"
+        android:imeOptions="actionDone" />
 
+    <!-- Buttons Container -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:weightSum="2">
 
         <Button
             android:id="@+id/saveBtn"
-            android:layout_width="180dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="SAVE" />
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#58E8FC"
+            android:padding="14dp"
+            android:text="SAVE"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/cancelBtn"
             android:layout_width="120dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:backgroundTint="#F32B2B"
-            android:text="CANCEL" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#FC5873"
+            android:padding="14dp"
+            android:text="CANCEL"
+            android:textColor="#FFFFFF" />
+
     </LinearLayout>
 
 </LinearLayout>
+
