@@ -1,0 +1,139 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer Editor"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Focus Timer"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/etHours"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="00"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="36sp" />
+
+        <TextView
+            android:text=":"
+            android:textSize="36sp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etMinutes"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="00"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="36sp" />
+
+        <TextView
+            android:text=":"
+            android:textSize="36sp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etSeconds"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="00"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rest Timer"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/rtHours"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="00"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="36sp" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:hint=":"
+            android:textSize="36sp"
+            android:layout_marginHorizontal="4dp"/>
+
+        <EditText
+            android:id="@+id/rtMinutes"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="00"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="36sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="36sp"
+            android:layout_marginHorizontal="4dp"/>
+
+        <EditText
+            android:id="@+id/rtSeconds"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="00"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Timer"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
