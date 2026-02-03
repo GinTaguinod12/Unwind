@@ -23,8 +23,12 @@
     <!-- Green -->
     <color name="primary1">#E9EDC9</color>
     <color name="dark_primary1">#CCD5AE</color>
+    <color name="light_green">#CDFF7C</color>
 
     <!-- Blue -->
+    <color name="blue">#9CE1FF</color>
+    <color name="light_blue">#CAEFFF</color>
+     <color name="dark_blue">#29B6F6</color>
     
     <!-- Indigo -->
     
