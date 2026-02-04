@@ -1,159 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewJournalPage">
-
-
-    <EditText
-        android:id="@+id/edtDate"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="start"
-        android:hint="Enter Date"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:background="#C0D6E4">
 
     <ScrollView
-        android:layout_width="350dp"
-        android:layout_height="550dp"
-        android:layout_marginTop="10dp">
+        android:id="@+id/scrollJournal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:clipToPadding="false">
 
         <LinearLayout
+            android:id="@+id/layoutJournal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_back_arrow"
+                app:tint="#393B43" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="What was one good thing that happened today?"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:background="#fff5de">
+                android:text="Daily Reflections"
+                android:textSize="28sp"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:textColor="#393B43"
+                android:layout_marginBottom="24dp"/>
 
-                <EditText
-                    android:id="@+id/edtPositiveEvent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDatePicker"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="15dp"
+                app:boxStrokeColor="#4DB6AC"
+                app:hintTextColor="#00796B"
+                app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:hint="Write anything that you enjoyed today ..."/>
-            </LinearLayout>
+                    android:hint="Select Date"
+                    android:textColor="#263238"
+                    android:focusable="false"
+                    android:clickable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="What was challenging about today?"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:background="#fff5de">
-
-                <EditText
-                    android:id="@+id/edtChallenge"
+                android:text="Why I felt this way today"
+                android:textStyle="bold"
+                android:textColor="#393B43"
+                android:paddingBottom="6dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxCornerRadiusTopStart="0dp"
+                app:boxCornerRadiusBottomEnd="0dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQuestion1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:hint="Write anything that troubled you today ... "/>
-            </LinearLayout>
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="What do you think influenced your mood today?"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:background="#fff5de">
-
-                <EditText
-                    android:id="@+id/edtMoodInfluence"
+                android:text="What moment today affected me most?"
+                android:textStyle="bold"
+                android:textColor="#393B43"
+                android:paddingBottom="6dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQuestion2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:hint="Write anything that affected your mood ... "/>
-            </LinearLayout>
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="What did today taught you?"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:background="#fff5de">
-
-                <EditText
-                    android:id="@+id/edtLesson"
+                android:text="What am I avoiding thinking about?"
+                android:textStyle="bold"
+                android:textColor="#393B43"
+                android:paddingBottom="6dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQuestion3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:hint="Write here what you learned today ... "/>
-            </LinearLayout>
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What do I need right now?"
+                android:textStyle="bold"
+                android:textColor="#393B43"
+                android:paddingBottom="6dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQuestion4"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What did I learn about myself today?"
+                android:textStyle="bold"
+                android:textColor="#393B43"
+                android:paddingBottom="6dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQuestion5"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="40dp"
+                android:text="SAVE ENTRY"
+                android:paddingHorizontal="40dp"
+                android:textColor="#3E2723"
+                app:backgroundTint="#FFF59D"
+                app:cornerRadius="20dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#000000"
+                app:elevation="4dp"/>
 
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="#4CAF50"
-            android:text="SAVE" />
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:text="CANCEL" />
-
-
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
