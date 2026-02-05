@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -7,16 +7,15 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/back5"
     tools:context=".LoginPage">
 
     <!-- App Logo -->
     <ImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:contentDescription="App Logo"
-        android:src="@drawable/logo" />
+        android:src="@drawable/unwindlogo" />
 
     <!-- Welcome Text -->
     <TextView
@@ -24,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome Back"
         android:textSize="26sp"
-        android:textStyle="bold|italic"
+        android:fontFamily="@font/nunito_bold"
         android:textColor="#2E3A59"
         android:layout_marginBottom="8dp" />
 
@@ -33,32 +32,33 @@
         android:layout_height="wrap_content"
         android:text="Login to continue"
         android:textSize="16sp"
+        android:fontFamily="@font/nunito_regular"
         android:textColor="#6B7280"
         android:layout_marginBottom="32dp" />
 
-    <!-- Username -->
     <EditText
-        android:id="@+id/uName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:hint="Username"
-        android:padding="14dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_rounded"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:textSize="16sp"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="16dp" />
+        android:inputType="text"
+        android:importantForAccessibility="no"
+        android:layout_marginBottom="12dp" />
 
-    <!-- Password -->
     <EditText
-        android:id="@+id/uPassword"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:hint="Password"
-        android:padding="14dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_rounded"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:textSize="16sp"
         android:inputType="textPassword"
-        android:layout_marginBottom="24dp" />
+        android:importantForAccessibility="no"
+        android:layout_marginBottom="12dp" />
 
     <!-- Login Button -->
     <Button
@@ -66,9 +66,10 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:fontFamily="@font/nunito_bold"
         android:textAllCaps="false"
         android:textSize="16sp"
-        android:backgroundTint="#58E7FC"
+        android:backgroundTint="#96B4FF"
         android:textColor="#FFFFFF"
         android:layout_marginBottom="12dp" />
 
@@ -79,9 +80,9 @@
         android:layout_height="wrap_content"
         android:text="Not yet registered? Create an account"
         android:textAllCaps="false"
+        android:fontFamily="@font/nunito_regular"
         android:textSize="14sp"
         android:background="@android:color/transparent"
         android:textColor="#4A9AF5" />
 
 </LinearLayout>
-
