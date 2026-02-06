@@ -1,5 +1,6 @@
 package com.example.colorgame;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,10 +14,11 @@ import java.util.Random;
 
 public class ColorGame extends AppCompatActivity {
 
-    TextView tvColorWord, tvScore, tvTimer;
+    TextView tvColorWord, tvScore, tvTimer, tvRound;
     Button btnBlue, btnPurple, btnGreen, btnYellow, btnRed, btnBrown;
     Button btnBack;
     ArrayList<ColorItem> colorList = new ArrayList<>();
+    ArrayList<Button> buttonList = new ArrayList<>();
     int score = 0;
     int textDuration = 2000;
     Handler handler = new Handler();
@@ -33,6 +35,7 @@ public class ColorGame extends AppCompatActivity {
         tvColorWord = findViewById(R.id.tvColorWord);
         tvScore = findViewById(R.id.tvScore);
         tvTimer = findViewById(R.id.tvTimer);
+        tvRound = findViewById(R.id.tvRound);
 
         btnBlue = findViewById(R.id.btnBlue);
         btnPurple = findViewById(R.id.btnPurple);
@@ -49,6 +52,13 @@ public class ColorGame extends AppCompatActivity {
         colorList.add(new ColorItem("YELLOW", Color.YELLOW));
         colorList.add(new ColorItem("RED", Color.RED));
         colorList.add(new ColorItem("BROWN", Color.parseColor("#795548")));
+
+        buttonList.add(btnBlue);
+        buttonList.add(btnPurple);
+        buttonList.add(btnGreen);
+        buttonList.add(btnYellow);
+        buttonList.add(btnRed);
+        buttonList.add(btnBrown);
 
         setupButton(btnBlue);
         setupButton(btnPurple);
@@ -84,17 +94,24 @@ public class ColorGame extends AppCompatActivity {
 
     void setupButton(Button button) {
         button.setOnClickListener(v -> {
+            if (!button.isEnabled()) return; 
+
             String selected = button.getText().toString();
             String correct = tvColorWord.getText().toString();
 
             if (selected.equals(correct)) {
                 score++;
                 tvScore.setText("Score: " + score);
+                button.setEnabled(false);
             }
         });
     }
 
     void showRandomText() {
+        for (Button button : buttonList) {
+            button.setEnabled(true);
+        }
+
         Random random = new Random();
         ColorItem wordItem = colorList.get(random.nextInt(colorList.size()));
         ColorItem colorItem = colorList.get(random.nextInt(colorList.size()));
@@ -115,6 +132,7 @@ public class ColorGame extends AppCompatActivity {
     }
 
     void startRound() {
+        tvRound.setText("Round: " + round);
         startTextLoop();
         startRoundTimer();
     }
@@ -137,6 +155,9 @@ public class ColorGame extends AppCompatActivity {
     void nextRound() {
         round++;
         if (round > maxRounds) {
+            Intent intent = new Intent(this, ScoreScreen.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
             finish();
             return;
         }
