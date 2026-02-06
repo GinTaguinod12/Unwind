@@ -23,6 +23,7 @@ public class ColorGame extends AppCompatActivity {
     Runnable textRunnable;
     int roundTime = 60000;
     int round = 1;
+    int maxRounds = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +136,10 @@ public class ColorGame extends AppCompatActivity {
 
     void nextRound() {
         round++;
+        if (round > maxRounds) {
+            finish();
+            return;
+        }
         textDuration -= 300;
         if (textDuration < 500) textDuration = 500;
 
