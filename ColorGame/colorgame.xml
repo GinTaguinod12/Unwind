@@ -34,7 +34,7 @@
         android:id="@+id/tvRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Round: 1/5"
+        android:text="Round: 1"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
