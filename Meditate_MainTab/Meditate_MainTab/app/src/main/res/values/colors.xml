@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="Tab">#f2b949</color>
+    <color name="Burgundy">#800020</color>
+    <color name="AF98AC">#AF98AC</color>
+    <color name="C074A3">#C074A3</color>
+    <color name="Azure">#043A7E</color>
+</resources>
