@@ -94,7 +94,7 @@ public class ColorGame extends AppCompatActivity {
 
     void setupButton(Button button) {
         button.setOnClickListener(v -> {
-            if (!button.isEnabled()) return; 
+            if (!button.isEnabled()) return;
 
             String selected = button.getText().toString();
             String correct = tvColorWord.getText().toString();
@@ -103,6 +103,9 @@ public class ColorGame extends AppCompatActivity {
                 score++;
                 tvScore.setText("Score: " + score);
                 button.setEnabled(false);
+            } else {
+                score--;
+                tvScore.setText("Score: " + score);
             }
         });
     }
