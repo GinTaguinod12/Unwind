@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class FocusActivity extends AppCompatActivity {
 
     TextView tvTimer;
@@ -58,7 +60,6 @@ public class FocusActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                // Automatically start Rest timer
                 Intent intent = new Intent(FocusActivity.this, RestActivity.class);
                 intent.putExtra("FOCUS_TIME", focusTime);
                 intent.putExtra("REST_TIME", restTime);
@@ -68,14 +69,14 @@ public class FocusActivity extends AppCompatActivity {
         }.start();
 
         isRunning = true;
-        btnPlayPause.setText("PAUSE");
+        btnPlayPause.setText(R.string.pause);
     }
 
     private void togglePlayPause() {
         if (isRunning) {
             timer.cancel();
             isRunning = false;
-            btnPlayPause.setText("PLAY");
+            btnPlayPause.setText(R.string.play);
         } else {
             startTimer();
         }
@@ -85,11 +86,18 @@ public class FocusActivity extends AppCompatActivity {
         int h = (int) (timeLeft / 1000) / 3600;
         int m = (int) ((timeLeft / 1000) % 3600) / 60;
         int s = (int) (timeLeft / 1000) % 60;
-        tvTimer.setText(String.format("%02d:%02d:%02d", h, m, s));
+
+        tvTimer.setText(
+                String.format(
+                        Locale.getDefault(),
+                        getString(R.string.time_format),
+                        h, m, s
+                )
+        );
     }
 
     private void stopAndReturn() {
-        if(timer != null) timer.cancel();
+        if (timer != null) timer.cancel();
 
         Intent intent = new Intent(FocusActivity.this, TimerEditor.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -97,3 +105,4 @@ public class FocusActivity extends AppCompatActivity {
         finish();
     }
 }
+
