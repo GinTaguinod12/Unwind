@@ -1,139 +1,190 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp">
+    android:background="@drawable/bg_moon"
+    tools:ignore="HardcodedText,Autofill,TextContrastCheck">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Timer Editor"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Focus Timer"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"/>
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/soft_blue"
+        android:contentDescription="Back"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="center">
-
-        <EditText
-            android:id="@+id/etHours"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:hint="00"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="2"
-            android:textSize="36sp" />
-
-        <TextView
-            android:text=":"
-            android:textSize="36sp"
-            android:layout_marginHorizontal="4dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etMinutes"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:hint="00"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="2"
-            android:textSize="36sp" />
-
-        <TextView
-            android:text=":"
-            android:textSize="36sp"
-            android:layout_marginHorizontal="4dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etSeconds"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:hint="00"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="2"
-            android:textSize="36sp" />
-    </LinearLayout>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rest Timer"
-        android:textSize="18sp"
-        android:layout_marginTop="30dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/rtHours"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:hint="00"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="2"
-            android:textSize="36sp" />
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:hint=":"
-            android:textSize="36sp"
-            android:layout_marginHorizontal="4dp"/>
-
-        <EditText
-            android:id="@+id/rtMinutes"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:hint="00"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="2"
-            android:textSize="36sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=":"
-            android:textSize="36sp"
-            android:layout_marginHorizontal="4dp"/>
+            android:text="Timer Editor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/soft_blue"/>
 
-        <EditText
-            android:id="@+id/rtSeconds"
-            android:layout_width="60dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="00"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="2"
-            android:textSize="36sp" />
+            android:text="Focus Timer"
+            android:textSize="18sp"
+            android:textColor="@color/soft_blue"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/etHours"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:textColor="@color/soft_blue"
+                android:textColorHint="@color/soft_blue"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
+                android:autofillHints="none"
+                android:importantForAccessibility="no"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textSize="36sp"
+                android:textColor="@color/soft_blue"/>
+
+            <EditText
+                android:id="@+id/etMinutes"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:textColor="@color/soft_blue"
+                android:textColorHint="@color/soft_blue"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
+                android:autofillHints="none"
+                android:importantForAccessibility="no"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textSize="36sp"
+                android:textColor="@color/soft_blue"/>
+
+            <EditText
+                android:id="@+id/etSeconds"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:textColor="@color/soft_blue"
+                android:textColorHint="@color/soft_blue"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
+                android:autofillHints="none"
+                android:importantForAccessibility="no"
+                android:textSize="36sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rest Timer"
+            android:textSize="18sp"
+            android:textColor="@color/soft_blue"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/rtHours"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:textColor="@color/soft_blue"
+                android:textColorHint="@color/soft_blue"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
+                android:autofillHints="none"
+                android:importantForAccessibility="no"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textSize="36sp"
+                android:textColor="@color/soft_blue"/>
+
+            <EditText
+                android:id="@+id/rtMinutes"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:textColor="@color/soft_blue"
+                android:textColorHint="@color/soft_blue"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
+                android:autofillHints="none"
+                android:importantForAccessibility="no"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textSize="36sp"
+                android:textColor="@color/soft_blue"/>
+
+            <EditText
+                android:id="@+id/rtSeconds"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:textColor="@color/soft_blue"
+                android:textColorHint="@color/soft_blue"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="2"
+                android:autofillHints="none"
+                android:importantForAccessibility="no"
+                android:textSize="36sp"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Timer"
+            android:layout_marginTop="30dp"
+            style="@style/PillButton"/>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Timer"
-        android:layout_marginTop="30dp"/>
+</RelativeLayout>
 
-</LinearLayout>
