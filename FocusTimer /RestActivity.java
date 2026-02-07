@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class RestActivity extends AppCompatActivity {
 
     TextView tvTimer;
@@ -38,7 +40,6 @@ public class RestActivity extends AppCompatActivity {
         btnPlayPause.setOnClickListener(v -> togglePlayPause());
         btnStop.setOnClickListener(v -> stopAndReturn());
 
-       
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -68,24 +69,31 @@ public class RestActivity extends AppCompatActivity {
         }.start();
 
         isRunning = true;
-        btnPlayPause.setText("PAUSE");
+        btnPlayPause.setText(R.string.pause);
     }
 
-   private void togglePlayPause() {
-        if(isRunning) {
+    private void togglePlayPause() {
+        if (isRunning) {
             timer.cancel();
             isRunning = false;
-            btnPlayPause.setText("PLAY");
+            btnPlayPause.setText(R.string.play);
         } else {
             startTimer();
         }
-   }
+    }
 
     private void updateUI() {
         int h = (int) (timeLeft / 1000) / 3600;
         int m = (int) ((timeLeft / 1000) % 3600) / 60;
         int s = (int) (timeLeft / 1000) % 60;
-        tvTimer.setText(String.format("%02d:%02d:%02d", h, m, s));
+
+        tvTimer.setText(
+                String.format(
+                        Locale.getDefault(),
+                        getString(R.string.time_format),
+                        h, m, s
+                )
+        );
     }
 
     private void stopAndReturn() {
