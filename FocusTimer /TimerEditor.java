@@ -19,6 +19,8 @@ public class TimerEditor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timereditortab);
 
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
         etHours = findViewById(R.id.etHours);
         etMinutes = findViewById(R.id.etMinutes);
         etSeconds = findViewById(R.id.etSeconds);
