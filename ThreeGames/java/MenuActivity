@@ -1,0 +1,52 @@
+package com.calmcampus.threegames;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+public class MenuActivity extends AppCompatActivity {
+
+    private CardView whackamoleCard;
+    private CardView bulldogcrushCard;
+    private CardView colorgameCard;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+
+        whackamoleCard = findViewById(R.id.whackamoleCard);
+        bulldogcrushCard = findViewById(R.id.bulldogcrushCard);
+        colorgameCard = findViewById(R.id.colorgameCard);
+
+        whackamoleCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to WhackAMole game
+                Intent intent = new Intent(MenuActivity.this, WhackAMoleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        bulldogcrushCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to Bulldog Crush game (current candy crush)
+                Intent intent = new Intent(MenuActivity.this, BullDogCrushActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        colorgameCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to Color Game
+                Intent intent = new Intent(MenuActivity.this, ColorGameActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
