@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.calmcampus.threegames">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ThreeGames">
+
+        <!-- Menu Activity - Main Launcher -->
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Bulldog Crush Game (Match-3 Candy Crush style) -->
+        <activity
+            android:name=".BullDogCrushActivity"
+            android:screenOrientation="portrait"
+            android:label="Bulldog Crush"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+
+        <!-- Whack-A-Mole Game -->
+        <activity
+            android:name=".WhackAMoleActivity"
+            android:screenOrientation="portrait"
+            android:label="Whack-A-Mole"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+
+        <!-- Color Game (Future Implementation)
+        Uncomment when ColorGameActivity is created-->
+
+        <activity
+            android:name=".ColorGameActivity"
+            android:screenOrientation="portrait"
+            android:label="Color Game"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+
+
+    </application>
+
+</manifest>
