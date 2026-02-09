@@ -1,37 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/ANTlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Motivation"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#333333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:layout_marginTop="18dp"
-        android:layout_margin="10dp"
         android:id="@+id/editText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Enter new task here"
-        android:textSize="20sp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"/>
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:inputType="textCapSentences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ANTlabel" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
         android:text="Save"
-        android:textSize="15sp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"/>
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="#025A0E"
+        app:backgroundTint="#afe4b1"
+        app:cornerRadius="28dp"
+        app:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/cancelBtn"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_toLeftOf="@id/saveBtn"
+        android:layout_marginTop="8dp"
         android:text="Cancel"
-        android:textSize="15sp"
-        android:layout_marginEnd="20dp"/>
+        android:textAllCaps="false"
+        android:textColor="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
