@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Body -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M20,12 h24 a8,8 0 0 1 8,8 v16 a8,8 0 0 1 -8,8 h-24 a8,8 0 0 1 -8,-8 v-16 a8,8 0 0 1 8,-8"/>
+
+    <!-- Stripe -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,26 h40 v6 h-40 z"/>
+
+    <!-- Fuse -->
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M52,15 c8,4 10,10 6,14 c-10,2 -6,0 -6,-4 z"/>
+</vector>

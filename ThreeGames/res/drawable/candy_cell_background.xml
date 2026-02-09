@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Very transparent background -->
+    <solid android:color="#05FFFFFF"/>
+
+    <!-- Subtle grid line border -->
+    <stroke
+        android:width="1dp"
+        android:color="#25000000"/>
+
+    <!-- Slight rounded corners for softer look -->
+    <corners android:radius="2dp"/>
+
+</shape>

@@ -1,0 +1,40 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Left stick -->
+    <path
+        android:fillColor="#D84315"
+        android:strokeColor="#B33912"
+        android:strokeWidth="1.5"
+        android:pathData="M16,20 l10,0 l4,28 l-10,0 z" />
+
+    <!-- Middle stick (front) -->
+    <path
+        android:fillColor="#E64A19"
+        android:strokeColor="#B33912"
+        android:strokeWidth="1.5"
+        android:pathData="M26,18 l12,0 l4,32 l-12,0 z" />
+
+    <!-- Right stick -->
+    <path
+        android:fillColor="#D84315"
+        android:strokeColor="#B33912"
+        android:strokeWidth="1.5"
+        android:pathData="M39,20 l10,0 l4,28 l-10,0 z" />
+
+    <!-- Band wrapping sticks -->
+    <path
+        android:fillColor="#FFEB3B"
+        android:strokeColor="#FBC02D"
+        android:strokeWidth="2"
+        android:pathData="M12,30 l43,0 l0,10 l-40,0 z" />
+    <!-- Fuse fill -->
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M30,4 c8,4 10,10 6,14 c-2,2 -6,0 -6,-4 z"
+        android:strokeColor="#E69100"
+        android:strokeWidth="0.8"/>
+</vector>

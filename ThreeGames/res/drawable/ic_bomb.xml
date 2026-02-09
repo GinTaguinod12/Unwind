@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Bomb body fill -->
+    <path
+        android:fillColor="#5E5E5E"
+        android:pathData="M32,12 a20,20 0 1 1 -0.1,0"
+        android:strokeColor="#3D3D3D"
+        android:strokeWidth="1"/>
+    <!-- Fuse fill -->
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M30,4 c8,4 10,10 6,14 c-2,2 -6,0 -6,-4 z"
+        android:strokeColor="#E69100"
+        android:strokeWidth="0.8"/>
+</vector>
