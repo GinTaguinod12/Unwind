@@ -5,7 +5,7 @@ implementation("it.xabaras.android:recyclerview-swipedecorator:1.4")
 
 what you should see:
 
-dependencies {
+dependencies { 
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -15,3 +15,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+
+*** NOTE: DONT COPY THE WHOLE DEPENDENCIES FUNCTION, ONLY PASTE THE IMPLEMENTATION (...) CODE ***
