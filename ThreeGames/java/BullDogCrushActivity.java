@@ -232,26 +232,26 @@ public class BullDogCrushActivity extends AppCompatActivity {
         if (tutorialStep == 0) {
             // Tutorial Step 1: Teach Firecracker (Match 4)
             // Fixed map for firecracker tutorial
-            int[][] fixedMap = {
-                    {0, 1, 2, 3, 4, 5, 0, 1}, // Row 0
-                    {2, 3, 4, 5, 0, 1, 2, 3}, // Row 1
-                    {4, 5, 2, 1, 0, 3, 4, 5}, // Row 2
-                    {1, 0, 5, 0, 5, 0, 0, 2}, // Row 3 - RED candies to match
-                    {0, 5, 0, 1, 0, 3, 4, 5}, // Row 4
-                    {5, 0, 1, 2, 3, 4, 5, 0}, // Row 5
-                    {1, 0, 3, 4, 5, 0, 1, 2}, // Row 6
-                    {3, 4, 5, 0, 1, 2, 3, 4}  // Row 7
-            };
 //            int[][] fixedMap = {
 //                    {0, 1, 2, 3, 4, 5, 0, 1}, // Row 0
-//                    {2, 3, 4, 5, 2, 1, 2, 3}, // Row 1
+//                    {2, 3, 4, 5, 0, 1, 2, 3}, // Row 1
 //                    {4, 5, 2, 1, 0, 3, 4, 5}, // Row 2
-//                    {1, 2, 0, 0, 5, 0, 5, 2}, // Row 3 - RED candies to match
-//                    {3, 4, 5, 1, 2, 3, 4, 5}, // Row 4
+//                    {1, 0, 5, 0, 5, 0, 0, 2}, // Row 3 - RED candies to match
+//                    {0, 5, 0, 1, 0, 3, 4, 5}, // Row 4
 //                    {5, 0, 1, 2, 3, 4, 5, 0}, // Row 5
-//                    {1, 2, 3, 4, 5, 0, 1, 2}, // Row 6
+//                    {1, 0, 3, 4, 5, 0, 1, 2}, // Row 6
 //                    {3, 4, 5, 0, 1, 2, 3, 4}  // Row 7
 //            };
+            int[][] fixedMap = {
+                    {0, 1, 2, 3, 4, 5, 0, 1}, // Row 0
+                    {2, 3, 4, 5, 2, 1, 2, 3}, // Row 1
+                    {4, 5, 2, 1, 0, 3, 4, 5}, // Row 2
+                    {1, 2, 0, 0, 5, 0, 5, 2}, // Row 3 - RED candies to match
+                    {3, 4, 5, 1, 2, 3, 4, 5}, // Row 4
+                    {5, 0, 1, 2, 3, 4, 5, 0}, // Row 5
+                    {1, 2, 3, 4, 5, 0, 1, 2}, // Row 6
+                    {3, 4, 5, 0, 1, 2, 3, 4}  // Row 7
+            };
 
             for (int row = 0; row < GRID_ROWS; row++) {
                 for (int col = 0; col < GRID_COLS; col++) {
@@ -1703,180 +1703,6 @@ public class BullDogCrushActivity extends AppCompatActivity {
                     candyTypes[row - 1][col] = -1;
                     candyTypes[row + 1][col] = -1;
                     candyTypes[row + 2][col] = -1;
-                    candyTypes[row][col - 1] = -1;
-                    candyTypes[row][col - 2] = -1;
-                }
-
-                //THEE BOMB : t-shapes
-                //        C
-                //      B c D
-                //        F
-                //        G
-
-                if (row + 2 < GRID_ROWS &&
-                        col >= 2 && col < GRID_COLS - 2 &&
-//                        candyTypes[row][col + 2] == centerType && powerUpTypes[row][col + 2] == POWERUP_NONE &&
-//                        candyTypes[row][col - 2] == centerType && powerUpTypes[row][col - 2] == POWERUP_NONE &&
-                        candyTypes[row][col - 1] == centerType && powerUpTypes[row][col - 1] == POWERUP_NONE &&
-                        candyTypes[row][col + 1] == centerType && powerUpTypes[row][col + 1] == POWERUP_NONE &&
-                        candyTypes[row + 1][col] == centerType && powerUpTypes[row + 1][col] == POWERUP_NONE &&
-                        candyTypes[row + 2][col] == centerType && powerUpTypes[row + 2][col] == POWERUP_NONE &&
-
-                        !matched[row][col - 1] &&
-                        !matched[row][col + 1] &&
-//                        !matched[row][col - 2] &&
-//                        !matched[row][col + 2] &&
-                        !matched[row + 1][col] &&
-                        !matched[row + 2][col] ){
-
-                    hasMatch = true;
-                    matched[row][col] = true;
-                    matched[row][col - 1] = true;
-                    matched[row][col + 1] = true;
-//                    matched[row][col - 2] = true;
-//                    matched[row][col + 2] = true;
-                    matched[row + 1][col] = true;
-                    matched[row + 2][col] = true;
-
-                    powerUpTypes[row][col] = POWERUP_BOMB;
-                    candies[row][col].setImageResource(getPowerUpDrawable(POWERUP_BOMB));
-                    animatePowerUpCreation(candies[row][col]);
-                    tutorialPowerUpCreated = true;
-
-                    candyTypes[row][col - 1] = -1;
-                    candyTypes[row][col + 1] = -1;
-//                    candyTypes[row][col - 2] = -1;
-//                    candyTypes[row][col + 2] = -1;
-                    candyTypes[row + 1][col] = -1;
-                    candyTypes[row + 2][col] = -1;
-                }
-
-                //        G
-                //        F
-                //      B c D
-                //        C
-
-                if (row >= 2 && row < GRID_ROWS - 1 &&
-                        col >= 2 && col < GRID_COLS - 2 &&
-//                        candyTypes[row][col - 2] == centerType && powerUpTypes[row][col - 2] == POWERUP_NONE &&
-//                        candyTypes[row][col + 2] == centerType && powerUpTypes[row][col + 2] == POWERUP_NONE &&
-                        candyTypes[row][col - 1] == centerType && powerUpTypes[row][col - 1] == POWERUP_NONE &&
-                        candyTypes[row][col + 1] == centerType && powerUpTypes[row][col + 1] == POWERUP_NONE &&
-                        candyTypes[row - 1][col] == centerType && powerUpTypes[row - 1][col] == POWERUP_NONE &&
-                        candyTypes[row - 2][col] == centerType && powerUpTypes[row - 2][col] == POWERUP_NONE &&
-
-                        // Check not already matched
-//                        !matched[row][col - 2] &&
-//                        !matched[row][col + 2] &&
-                        !matched[row][col - 1] &&
-                        !matched[row][col + 1] &&
-                        !matched[row - 1][col] &&
-                        !matched[row - 2][col] ){
-
-                    hasMatch = true;
-                    matched[row][col] = true;
-//                    matched[row][col + 2] = true;
-//                    matched[row][col - 2] = true;
-                    matched[row][col - 1] = true;
-                    matched[row][col + 1] = true;
-                    matched[row - 1][col] = true;
-                    matched[row - 2][col] = true;
-
-                    powerUpTypes[row][col] = POWERUP_BOMB;
-                    candies[row][col].setImageResource(getPowerUpDrawable(POWERUP_BOMB));
-                    animatePowerUpCreation(candies[row][col]);
-                    tutorialPowerUpCreated = true;
-
-//                    candyTypes[row][col - 2] = -1;
-//                    candyTypes[row][col + 2] = -1;
-                    candyTypes[row][col - 1] = -1;
-                    candyTypes[row][col + 1] = -1;
-                    candyTypes[row - 1][col] = -1;
-                    candyTypes[row - 2][col] = -1;
-                }
-
-                //
-                //        B
-                //      C c F G
-                //        D
-                //
-
-                else if (row >= 2 && row < GRID_ROWS - 2 && col >= 2 && col < GRID_COLS - 2 &&
-//                        candyTypes[row - 2][col] == centerType && powerUpTypes[row - 2][col] == POWERUP_NONE && // A
-//                        candyTypes[row + 2][col] == centerType && powerUpTypes[row + 2][col] == POWERUP_NONE && // E
-                        candyTypes[row - 1][col] == centerType && powerUpTypes[row - 1][col] == POWERUP_NONE && // B
-                        candyTypes[row + 1][col] == centerType && powerUpTypes[row + 1][col] == POWERUP_NONE && // D
-                        candyTypes[row][col + 1] == centerType && powerUpTypes[row][col + 1] == POWERUP_NONE && // F
-                        candyTypes[row][col + 2] == centerType && powerUpTypes[row][col + 2] == POWERUP_NONE && // G
-
-//                        !matched[row - 2][col] &&
-//                        !matched[row + 2][col] &&
-                        !matched[row - 1][col] &&
-                        !matched[row + 1][col] &&
-                        !matched[row][col + 1] &&
-                        !matched[row][col + 2] ){
-
-                    hasMatch = true;
-//                    matched[row - 2][col] = true;
-//                    matched[row + 2][col] = true;
-                    matched[row - 1][col] = true;
-                    matched[row][col] = true;
-                    matched[row + 1][col] = true;
-                    matched[row][col + 1] = true;
-                    matched[row][col + 2] = true;
-
-                    powerUpTypes[row][col] = POWERUP_BOMB;
-                    candies[row][col].setImageResource(getPowerUpDrawable(POWERUP_BOMB));
-                    animatePowerUpCreation(candies[row][col]);
-                    tutorialPowerUpCreated = true;
-
-//                    candyTypes[row - 2][col] = -1;
-//                    candyTypes[row + 2][col] = -1;
-                    candyTypes[row - 1][col] = -1;
-                    candyTypes[row + 1][col] = -1;
-                    candyTypes[row][col + 1] = -1;
-                    candyTypes[row][col + 2] = -1;
-                }
-
-                //
-                //        B
-                //    G F c C
-                //        D
-                //
-
-                else if (row >= 2 && row < GRID_ROWS - 2 && col >= 2 && col < GRID_COLS - 2 &&
-//                        candyTypes[row + 2][col] == centerType && powerUpTypes[row + 2][col] == POWERUP_NONE && // E
-//                        candyTypes[row - 2][col] == centerType && powerUpTypes[row - 2][col] == POWERUP_NONE && // A
-                        candyTypes[row - 1][col] == centerType && powerUpTypes[row - 1][col] == POWERUP_NONE && // B
-                        candyTypes[row + 1][col] == centerType && powerUpTypes[row + 1][col] == POWERUP_NONE && // D
-                        candyTypes[row][col - 1] == centerType && powerUpTypes[row][col - 1] == POWERUP_NONE && // F
-                        candyTypes[row][col - 2] == centerType && powerUpTypes[row][col - 2] == POWERUP_NONE && // G
-
-//                        !matched[row - 2][col] &&
-//                        !matched[row + 2][col] &&
-                        !matched[row - 1][col] &&
-                        !matched[row + 1][col] &&
-                        !matched[row][col - 1] &&
-                        !matched[row][col - 2] ){
-
-                    hasMatch = true;
-//                    matched[row - 2][col] = true;
-//                    matched[row + 2][col] = true;
-                    matched[row - 1][col] = true;
-                    matched[row][col] = true;
-                    matched[row + 1][col] = true;
-                    matched[row][col - 1] = true;
-                    matched[row][col - 2] = true;
-
-                    powerUpTypes[row][col] = POWERUP_BOMB;
-                    candies[row][col].setImageResource(getPowerUpDrawable(POWERUP_BOMB));
-                    animatePowerUpCreation(candies[row][col]);
-                    tutorialPowerUpCreated = true;
-
-//                    candyTypes[row - 2][col] = -1;
-//                    candyTypes[row + 2][col] = -1;
-                    candyTypes[row - 1][col] = -1;
-                    candyTypes[row + 1][col] = -1;
                     candyTypes[row][col - 1] = -1;
                     candyTypes[row][col - 2] = -1;
                 }
